@@ -13,6 +13,7 @@
             <property name="object_api_name"    type="String"   default="Account"           label="Enter the Object API Name"/>
             <property name="field_api_name"     type="String"   default="Name"              label="Enter the Field API Name"/>
             <property name="iconname"           type="String"   default="standard:account"  label="Enter Employee Name"/>
+            <property name="place_holder_text"  type="String"   default="Search"            label="Enter Placeholder text"/>
         </targetConfig>
       </targetConfigs>
 </LightningComponentBundle>

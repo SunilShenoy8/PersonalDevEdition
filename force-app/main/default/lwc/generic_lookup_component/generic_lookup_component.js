@@ -5,6 +5,8 @@ export default class GenericLookupComponent extends LightningElement {
     @api object_api_name;
     @api field_api_name;
     @api iconname;
+    @api place_holder_text;
+
     @track records;
     @track search_key;
     @track selectedRecord;
@@ -12,6 +14,7 @@ export default class GenericLookupComponent extends LightningElement {
 
     connectedCallback() {
         this.iconname = (this.iconname == null || this.iconname == undefined) ? 'standard:account' : this.iconname;
+        this.place_holder_text = (this.place_holder_text == null || this.place_holder_text == undefined) ? 'Search..' : this.place_holder_text;
     }
     handleChange(event){
         this.search_key = event.target.value;

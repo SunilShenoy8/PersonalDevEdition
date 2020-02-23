@@ -2,7 +2,7 @@
     <div class="slds-grid slds-wrap">
         <div class="slds-col slds-size_4-of-4">
             <template if:false={selectedRecord}>
-                <lightning-input variant="label-hidden" label="Search Record" value={search_key} type="search" onchange={handleChange} placeholder="Search.."></lightning-input>
+                <lightning-input variant="label-hidden" label="Search Record" value={search_key} type="search" onchange={handleChange} placeholder={place_holder_text}></lightning-input>
             </template>
             <template if:true={selectedRecord}>
                 <div class="slds-input slds-clearfix" style="background: #CCC;border: 1px #CCC;">
