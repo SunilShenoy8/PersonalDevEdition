@@ -17,6 +17,9 @@
             ],
             "c/searchAddressLWC": [
                 "searchAddressLWC/searchAddressLWC.js"
+            ],
+            "c/GenericLookup": [
+                "GenericLookup/GenericLookup.js"
             ]
         }
     },
