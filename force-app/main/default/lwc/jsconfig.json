@@ -6,11 +6,20 @@
             "c/accountContactViewerLWC": [
                 "accountContactViewerLWC/accountContactViewerLWC.js"
             ],
+            "c/genericLookup": [
+                "genericLookup/genericLookup.js"
+            ],
             "c/helloWordLWC": [
                 "helloWordLWC/helloWordLWC.js"
             ],
             "c/lookupLWC": [
                 "lookupLWC/lookupLWC.js"
+            ],
+            "c/myComponent": [
+                "myComponent/myComponent.js"
+            ],
+            "c/recordFormViewLWC": [
+                "recordFormViewLWC/recordFormViewLWC.js"
             ],
             "c/recordformlwc": [
                 "recordformlwc/recordformlwc.js"
@@ -18,8 +27,11 @@
             "c/searchAddressLWC": [
                 "searchAddressLWC/searchAddressLWC.js"
             ],
-            "c/GenericLookup": [
-                "GenericLookup/GenericLookup.js"
+            "c/genericLookupComponent": [
+                "genericLookupComponent/genericLookupComponent.js"
+            ],
+            "c/lookupHolder": [
+                "lookupHolder/lookupHolder.js"
             ]
         }
     },
