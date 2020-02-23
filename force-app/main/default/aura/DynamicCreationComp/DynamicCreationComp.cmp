@@ -1,0 +1,41 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+	<aura:attribute name="accountRecord" type="Account" default="{ 'sobjectType': 'Account' }" />
+    <aura:attribute name="edits" type="Aura.Component[]" />
+    <aura:attribute name="fieldName" type="String" />
+    <aura:attribute name="output" type="String" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <article class="slds-card">
+        <div class="slds-grid slds-einstein-header slds-card__header">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-grid slds-grid_vertical-align-center slds-size_3-of-4 slds-medium-size_2-of-3">
+                    <div class="slds-media__body">
+                        <h2 class="slds-truncate" title="Einstein (10+)">
+                            <a href="javascript:void(0);" class="slds-card__header-link" title="Einstein (10+)">
+                                <span class="slds-text-heading_small">Dynamic Creation </span>
+                            </a>
+                        </h2>
+                    </div>
+                </div>
+                <div class="slds-einstein-header__figure slds-size_1-of-4 slds-medium-size_1-of-3"></div>
+            </header>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">
+            <div style="color:red;"><b>{!v.output}</b></div>
+            {!v.edits}
+            <hr/>
+            <ui:inputText value="{!v.fieldName}" label="Create Input for : "/>
+            <hr/>
+        </div>
+        <footer class="slds-card__footer">
+            <div class="slds-clearfix">
+               <div class="slds-float--right" style="color:red;margin-top:-25px;">
+                    <div style="display: inline-block;padding-right:15px;"> 
+                         <ui:button press="{!c.addField}" label="Add" />
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </article>
+</aura:component>

@@ -1,0 +1,5 @@
+<apex:page standardController="Lead">
+    <flow:interview name="testFlow" finishLocation="/{!Lead.id}">
+        <apex:param name="leadInfo" value="{!Lead.id}"/>
+    </flow:interview>
+</apex:page>

@@ -1,0 +1,14 @@
+<apex:page >
+    <html>
+        <head>
+        </head>
+        <body>
+        </body>
+    </html>
+    <script>
+    	window.onload =  function invokeLightningExp(){
+            sforce.one.navigateToURL(‘/home/home.jsp’);
+           
+         }
+    </script>
+</apex:page>

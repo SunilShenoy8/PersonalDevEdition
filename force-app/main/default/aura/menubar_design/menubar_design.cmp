@@ -1,0 +1,15 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="currentMenuItem" type="Integer" default="1"/>
+    <aura:attribute name="menuItems" type="List" 
+                    default="[{label:'Home',id: 1},{label:'About',id: 2},{label:'Portfolio',id: 3},{label:'Services',id: 4},{label:'Contact Us',id: 5}]"/>
+    
+    <div>
+        <div class="innerbox">
+            <ul>
+                <aura:iteration items="{!v.menuItems}" var="itm">
+                    <li data-item="{!itm.id}" onclick="{!c.selectedMenuItem}"><a href="#">{!itm.label}</a></li>
+                </aura:iteration>
+            </ul>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,23 @@
+<aura:component controller="RecordLevel_CRUD_Handler" implements="force:appHostable,flexipage:availableForAllPageTypes"  access="global" >
+    <!-- ATTRIBUTES -->
+    <aura:attribute name="flagToCall" type="Boolean"/>
+    <aura:attribute name="sObjectDetail" type="String"/>
+    <aura:attribute name="tableView" type="Aura.Component" />
+    <aura:attribute name="fieldDetails" type="List"/>
+    
+    <!-- HANDLERS -->
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <br/>
+    <!-- MARK UPS -->
+    <div>
+        {!v.tableView}
+    </div>
+    
+  
+    <!--c:WD_Table selectedObjectApi="{!v.sObjectDetail}" selectedObjectLabel="{!v.sObjectDetail}" fieldDetails="{!v.fieldDetails}"/>
+    <aura:if isTrue="{!v.flagToCall}">
+        <c:WD_Table selectedObjectApi="{!v.sObjectDetail.objApiName}" selectedObjectLabel="{!v.sObjectDetail.objLabel}"/>
+    </aura:if-->
+
+</aura:component>

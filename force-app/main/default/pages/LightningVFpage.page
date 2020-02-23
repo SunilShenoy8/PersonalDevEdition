@@ -1,0 +1,38 @@
+<apex:page >
+    <html>
+        <head>
+            <apex:includeLightning />
+        </head>
+        <body>
+            <div id="dispLightning">
+            </div>
+        </body>
+    </html>
+    <script type="text/javascript">
+    	
+    	
+   	  /*window.onload = function invokeLightning(){
+            $Lightning.use("c:LightningVFApp", function() {
+                $Lightning.createComponent("c:sfdcmonkey_LookupComponent",
+                                           { 
+                                               'objectAPIName' : 'account',
+                                               'IconName':'standard:account',
+                                               'selectedRecord': {},
+                                               'label' : 'Account Name'
+                                           },
+                                           "dispLightning",
+                                           function(cmp) {
+                                               console.log('Component created, do something cool here');
+                                           });
+            });
+        }*/
+   		 window.onload = function invokeLightning(){
+             var baseURL = window.location.origin;
+             window.location.href = baseURL+'/lightning/o/Account/list';
+        }
+    
+        
+        
+    </script>
+    
+</apex:page>

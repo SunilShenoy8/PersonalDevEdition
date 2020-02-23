@@ -1,0 +1,10 @@
+<aura:component >
+	<aura:attribute name="Inner" type="String" default="Inner Component" />
+    
+    <aura:registerEvent name="componentEvent" type="c:ComponentEvent"/>
+    <div>
+        {!v.Inner}
+    </div>
+    
+    <button class="slds-button slds-button--neutral" onclick="{!c.fireComponentEvent}" >Fire Event</button>
+</aura:component>

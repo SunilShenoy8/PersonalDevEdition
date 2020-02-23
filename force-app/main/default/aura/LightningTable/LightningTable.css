@@ -1,0 +1,8 @@
+.THIS .selected{
+    color:orange;
+}
+
+.THIS .limitVert{
+    max-height: 50vh;
+    overflow: auto;
+}

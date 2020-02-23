@@ -1,0 +1,14 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" controller="GeneralLightningApex" access="global" >
+    
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="ContactObj" type="Object"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- Markups -->
+    <h2 class="header">Basic Input Date</h2>
+    <lightning:input type="text" name="name" label="Name: " value="{!v.ContactObj.lastName}"/>
+    <lightning:input type="email" name="email" label="Email: " value="{!v.ContactObj.email}" />
+    <lightning:input type="number" name="phone" label="Phone: " value="{!v.ContactObj.phone}"/>
+    
+    <lightning:button variant="brand" label="Save" title="Save" onclick="{! c.saveContact }" />
+</aura:component>

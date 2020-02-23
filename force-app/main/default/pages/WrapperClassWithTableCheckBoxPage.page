@@ -1,0 +1,19 @@
+<apex:page showHeader="true" sidebar="true" controller="WrapperClassExample">
+	<apex:form >
+	<apex:pageBlock id="pblock" title="SELECT CONTACTS">
+		<apex:pageBlockButtons >
+			<apex:commandButton id="select" title="Done" value="process selected" action="{!processSelected}" reRender="ptable"/>
+		</apex:pageBlockButtons>
+		<apex:pageBlockTable value="{!contact}" var="c">
+				<apex:column >
+                    <!-- This is our selected Boolean property in our wrapper class -->
+                    <apex:inputCheckbox value="{!c.selected}"/>
+                </apex:column>
+                <!-- This is how we access the contact values within our cContact container/wrapper -->
+                <apex:column value="{!c.c.lastName}" />
+                <apex:column value="{!c.c.Email}" />
+                <apex:column value="{!c.c.Phone}" />
+        </apex:pageBlockTable>
+	</apex:pageBlock>
+	</apex:form>
+</apex:page>

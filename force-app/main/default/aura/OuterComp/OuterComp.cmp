@@ -1,0 +1,16 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global" >
+    <aura:attribute name="Outer" type="String" default="Outer Component" />
+    
+    <aura:handler name="componentEvent" event="c:ComponentEvent" action="{!c.handleComponentEvent}"/>
+    
+    <div>
+        {!v.Outer}
+    </div>
+    
+    <br/>
+    <br/>
+    <div>
+        <c:InterComp />
+    </div>
+	    
+</aura:component>

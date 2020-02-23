@@ -1,0 +1,12 @@
+<aura:component controller="OpenPopupController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global">
+    <aura:attribute name="nameStr" type="String" />
+    <aura:attribute name="Department" type="String" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="isObjectSelected" type="boolean" default="false"/>
+    
+    <ui:inputText value="{!v.nameStr}" label="Name : "/>
+    <br/>
+    <ui:inputText value="{!v.Department}" label="Department : "/>
+     <br/>
+    <ui:button press="{!c.saveData}" label="Save" />
+</aura:component>

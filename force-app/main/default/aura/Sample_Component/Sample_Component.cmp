@@ -1,0 +1,3 @@
+<aura:component controller="GenericMultipleInsertOperationHandler" implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes" >
+	
+</aura:component>

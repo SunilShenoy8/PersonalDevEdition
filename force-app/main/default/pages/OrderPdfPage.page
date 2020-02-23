@@ -1,0 +1,107 @@
+<apex:page standardController="Order" extensions="OrderItemExtensionClass" showHeader="FALSE" standardStylesheets="false" renderas="pdf">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <style type="text/css">
+            table {
+                font-family: Helvetica, Arial, sans-serif; 
+                clear:left;
+            }
+        </style>
+    </head>
+        <apex:image id="logo" url="https://warpdrivetestdomain-dev-ed--c.ap5.content.force.com/servlet/servlet.FileDownload?file=0157F000000HeMc" width="200" height="100"/>
+        <div style='float:right;width:350px;height:155px;'>
+            <p style="font-size:xx-large;text-align:Center;margin:1">
+                <B>PURCHASE ORDER</B>
+            </p>
+            <p style="font-size:medium;text-align:left;margin:0">
+                P.O.NO. {!Order.Account.Name}/2017-18/ {!Order.OrderNumber}
+            </p>
+            <p style="font-size:medium;text-align:left;margin:0;">
+                Date:   {!TODAY()}
+            </p>
+        </div>
+        <div style='clear:both;float:right;width:350px;height:110px;'>
+            
+            <p style="font-size:medium;text-align:left;margin:0">
+                Bill To: <br/>
+                {!Order.BillingStreet}<br/>
+                {!Order.BillingCity}<br/>
+                {!Order.BillingState}<br/>
+                {!Order.BillingCountry}<br/>
+                {!Order.BillingPostalCode}<br/>
+            </p>
+        </div>
+        <div style='float:left;width:280px;height:110px;'>
+            <p style="font-size:medium;text-align:left;margin:0">
+                Ship To: <br/>
+                {!Order.ShippingStreet}<br/>
+                {!Order.ShippingCity}<br/>
+                {!Order.ShippingState}<br/>
+                {!Order.ShippingCountry}<br/>
+                {!Order.ShippingPostalCode}<br/>
+            </p>
+            
+        </div>
+    
+        <table  cellpadding="6" cellspacing="0" width="100%" border="2" style='clear:both;'>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th> 
+                <th>Unit Cost</th>
+                <th>Net Total</th>
+                <th>Line Total</th>
+            </tr>
+            <apex:repeat value="{!OrderiT}" var="lineItem" >
+                <tr>
+                    <td>{!lineItem.Product2.name} </td>
+                    <td>{!lineItem.Quantity} </td>
+                    <td>{!lineItem.UnitPrice}</td>
+                    <td>{!lineItem.TotalPrice}</td>
+                    <td>{!lineItem.TotalPrice}</td>
+                </tr>
+            </apex:repeat>
+            <tr>
+               <td colspan="4" align="right">TOTAL</td>
+               <td><b>{!Order.TotalAmount}</b></td>
+            </tr>
+            <tr>
+               <td colspan="4" align="right">PF 24% of Total Value of 35%</td>
+               <td>{!Order.Pf__c}</td>
+            </tr>
+            <tr>
+               <td colspan="4" align="right">ESI 6.5% of Total Value of 35%</td>
+               <td>{!Order.ESI__c}</td>
+            </tr>
+            <tr>
+               <td colspan="4" align="right">Service Tax 6.5% of Total Value of 35%</td>
+               <td>{!Order.Service_Tax__c}</td>
+            </tr>
+            <tr>
+               <td colspan="4" align="right">Vat 14.5% of Total Value of 65%</td>
+               <td>{!Order.Vat__c}</td>
+            </tr>
+            <tr>
+               <td colspan="4" align="right">Sub Total</td>
+               <td>{!Order.Sub_Total__c}</td>
+            </tr>
+            <tr>
+               <td colspan="4" align="right">Grand Total</td>
+               <td><b>{!Order.Grand_Total__c}</b></td>
+            </tr>
+            <tr>
+               <td colspan="4" align="right">Advance</td>
+               <td>{!Order.Advance__c}</td>
+            </tr>
+            <tr>
+               <td colspan="4" align="right">Amount Due</td>
+               <td><b>{!Order.Amount_Due__c}</b></td>
+            </tr>
+        </table>
+    	<br/>
+    	<div>
+            <b>Terms and Conditions:</b><br/>
+            1. “Agreement” means the agreement between Supplier and Buyer for the purchase and sale of Goods and/or Services.<br/>
+    		2. “Buyer” means the Governing Council of the University of Toronto.<br/>
+            3. “Delivery Date” means the date of delivery for Goods or performance of Services as specified in a Purchase Order.<br/>
+    	</div>
+</apex:page>

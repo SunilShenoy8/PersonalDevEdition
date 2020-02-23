@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes" >
+    <aura:attribute name="searchStr" type="String" description="The API name of the SObject to search"  />
+	<c:LookupComp sObjectAPIName="Account" instanceId="account" pluralLabel="Accounts"/>
+</aura:component>

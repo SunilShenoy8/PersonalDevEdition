@@ -1,0 +1,26 @@
+<apex:page controller="OAuthDemoPageController">
+    <apex:form >
+        <apex:pageBlock title="OAuth Demo" mode="edit">
+            <apex:pageBlockSection title="Authorization Code" columns="1">
+                <apex:pageBlockSectionItem >
+                    Your Authorization Code
+                    <apex:outPutText >{!authorizationCode}</apex:outPutText>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        
+        
+            <apex:pageBlockSection title="Access Token">
+                <apex:commandButton value="Get Access Token" action="{!getAccessToken}"/>
+                <apex:pageBlockSectionItem >
+                Your Access Token 
+                <apex:outPutText >{!accessToken}</apex:outPutText>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Upload File">    
+                <apex:inputFile value="{!attachmentBody}" fileName="{!attachmentName}"></apex:inputFile>
+                <apex:commandButton value="UPLOAD FILE" action="{!uploadFile}"/>
+            </apex:pageBlockSection>
+         </apex:pageBlock>
+    </apex:form>
+</apex:page>

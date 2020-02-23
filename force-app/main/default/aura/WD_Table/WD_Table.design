@@ -1,0 +1,4 @@
+<design:component >
+	<design:attribute name="componentHeight" label="Component Height" default="350"/>
+    <design:attribute name="PopupHeight" label="Popup Height" default="350"/>
+</design:component>

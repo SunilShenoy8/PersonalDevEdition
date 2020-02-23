@@ -1,0 +1,4 @@
+<aura:component >
+    <aura:dependency resource="markup://force:navigateToURL" type="EVENT"/>
+	 <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+</aura:component>

@@ -1,0 +1,48 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+	
+    <aura:attribute name="flagToDisp" type="Boolean" />
+    <aura:attribute name="selectedRating" type="Integer" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    
+    
+    <!-- MARKUPS -->
+    <aura:if isTrue="{!v.flagToDisp}">
+        <div class="demo-only" style="height: 640px;">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header" style="display:none">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="{!c.close}">
+                            X
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <div class="headingStyle">How enjoyable was this story?</div>
+                        <div class="outerDivContainer">
+                            <ul>
+                                <li><a aura:id="1" data-item="1" onclick="{!c.collectRating}"  class="round yellow">1<span class="round"><img src="{!$Resource.PM_CFS_1}"></img></span></a></li>
+                                <li><a aura:id="2" data-item="2" onclick="{!c.collectRating}" class="round yellow">2<span class="round"><img src="{!$Resource.PM_CFS_2}"></img></span></a></li>
+                                <li><a aura:id="3" data-item="3" onclick="{!c.collectRating}" class="round yellow">3<span class="round"><img src="{!$Resource.PM_CFS_3}"></img></span></a></li>
+                                <li><a aura:id="4" data-item="4" onclick="{!c.collectRating}" class="round yellow">4<span class="round"><img src="{!$Resource.PM_CFS_4}"></img></span></a></li>
+                                <li><a aura:id="5" data-item="5" onclick="{!c.collectRating}" class="round yellow">5<span class="round"><img src="{!$Resource.PM_CFS_5}"></img></span></a></li>
+                            </ul> 
+                        </div>
+                        
+                        <div style="text-align:center">
+                            <span style="font-size: 18px;">What could we do better?</span>
+                            <lightning:textarea name="input3" placeholder="type here..."/>
+                        </div>
+                    </div>
+                    
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral btndsg" onclick="{!c.close}">Skip</button>
+                        <button class="slds-button slds-button_brand btndsg" style="background:rgba(252,227,1,1);">Submit</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </aura:if>
+    
+</aura:component>

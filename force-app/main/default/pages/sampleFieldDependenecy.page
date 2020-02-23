@@ -1,0 +1,14 @@
+<apex:page standardController="Position__c">
+    <apex:form >
+    <apex:pageBlock mode="edit">
+        <apex:pageBlockButtons >
+            <apex:commandButton action="{!save}" value="save"/>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection title="Field dependency test" columns="2">
+            <apex:outputLabel value="hello"/>
+            <apex:inputField value="{!Position__c.Functional_Area__c}"/>
+            <apex:inputField value="{!Position__c.Job_Level__c}"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    s</apex:form>
+</apex:page>

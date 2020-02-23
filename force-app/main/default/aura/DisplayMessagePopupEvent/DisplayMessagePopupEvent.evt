@@ -1,0 +1,5 @@
+<aura:event type="APPLICATION" description="Event template" >
+    <aura:attribute name="titleMsg" type="String" />
+    <aura:attribute name="bodyMsg" type="String" />
+    <aura:attribute name="open" type="Boolean" />
+</aura:event>

@@ -1,0 +1,149 @@
+<!--aura:component controller="GenericMultipleInsertOperationHandler" implements="flexipage:availableForAllPageTypes,force:hasRecordId"-->
+<aura:component controller="GenericMultipleInsertOperationHandler" implements="force:appHostable,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes" >
+
+	<aura:attribute name="objectApiList" type="List"/>
+	<aura:attribute name="isObjectSelected" type="boolean" default="false"/>
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+	<aura:attribute name="selectedObjFieldNames" type="List"/>
+	<aura:attribute name="inputValue" type="string[]" />
+	<aura:attribute name="fieldDetails" type="List"/>
+	<aura:attribute name="data" type="List"/>
+	<aura:attribute name="componentHeight" type="String" default="400"/>
+    <aura:attribute name="PopupHeight" type="String" default="400"/>
+    <aura:attribute name="selectedObjectLabel" type="String" />
+    <aura:attribute name="selectedObjectApi" type="String" />
+    <aura:attribute name="errorFlagForNoFields" type="Boolean" />
+	<aura:attribute name="errorFlagForNullRequiredFields" type="Boolean" />
+
+	<form>
+
+	<aura:If isTrue="{!v.isObjectSelected}">
+		<div class="slds-clearfix">
+			<div class="slds-float--right" style="padding-bottom: 20px">
+				<div style="display: inline-block;padding-right:15px;"> 
+					<ui:button class="slds-button slds-button_brand" press="{!c.addRow}">Add Row</ui:button>
+				</div>
+				<div style="display: inline-block;padding-right:15px;"> 
+					<ui:button class="slds-button slds-button_brand" press="{!c.removeRow}">Remove Row</ui:button>
+				</div>
+			</div>
+		</div>
+	</aura:If>
+
+	<div style="padding-bottom: 20px">
+		<ui:inputSelect aura:id="selectGenericObject" label="Select Object" change="{!c.onChangeFunction}" >
+	        <aura:iteration items="{!v.objectApiList}" var="objectItem">
+	             <ui:inputSelectOption text="{!objectItem.fieldApiName}" label="{!objectItem.fieldApiName}"/>
+	        </aura:iteration>
+	    </ui:inputSelect>
+	</div>
+	 
+
+    <aura:If isTrue="{!v.isObjectSelected}">
+    	<aura:If isTrue="{! greaterthan(v.fieldDetails.length,0)}">
+	        <div role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open slds-modal_large">
+	                <div class="slds-modal__container">
+	                    <div class="slds-modal__header">
+	                    	<button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closePopUp}">
+	                            X
+	                            <span class="slds-assistive-text">Close</span>
+	                        </button>
+	                        <h2 id="header99" class="slds-text-heading--medium">Create new {!v.selectedObjectLabel}</h2>
+                            <div class="slds-clearfix">
+                                <div class="slds-float--right" style="color:red;margin-top:-25px;">
+                                    <div style="display: inline-block;padding-right:15px;"> 
+                                        <ui:button class="slds-button slds-button_brand" press="{!c.addRow}">Add Row</ui:button>
+                                    </div>
+                                    <div style="display: inline-block;"> 
+                                        <ui:button class="slds-button slds-button_brand" press="{!c.removeRow}">Remove Row</ui:button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="color:red;">{!v.errorFlagForNullRequiredFields}</div>
+	                    </div>
+	                    <div>
+	                        <article class="slds-card slds-scrollable" style="{!'height:'+v.PopupHeight+'px'}">
+	                        	<table class="slds-table slds-table_bordered slds-table_col-bordered" style="width:100%;" cellpadding="0" cellspacing="0">
+						    		<thead>
+						    			<tr class="slds-text-title_caps">
+						    				<aura:iteration items="{!v.fieldDetails}" var="field" indexVar="key">
+							    				<th scope="col">
+                                                    <aura:if isTrue="{! field.isRequiredField == true}">
+                                                        <div class="slds-clearfix">
+                                                            <div class="slds-float_right" style="color:red;margin-bottom:-20px;">
+                                                                <p style="font-size:28px;">*</p>
+                                                            </div>
+                                                        </div>
+                                                    </aura:if>
+                                                    <div class="slds-truncate" style="width:150px;">{!field.fieldLabel}</div>
+							      				</th>
+						      				</aura:iteration>
+						    			</tr>
+						    		</thead>
+						    		<tbody>
+							    			<aura:iteration items="{!v.data}" var="dt">
+												<tr>
+													<aura:iteration items="{!dt.fields}" var="field">
+														<td >
+                                                            
+                                                            <!-- HANDLING STRING INPUT -->
+                                                            <aura:if isTrue="{! field.type == 'STRING'}">
+                                                                <lightning:input aura:id="{!field.name}" value="{!field.value}" class="widthClass" type="String"/>
+                                                            </aura:if>
+                                                            
+                                                            
+                                                            <!-- HANDLING PICKLIST INPUT -->
+                                                            <aura:if isTrue="{! field.type == 'PICKLIST'}">
+                                                                <lightning:select aura:id="{!field.name}" onchange="{!c.onChangePickList}" class="widthClass" value="{!field.value}">
+                                                                    <!--option value="{!pickVal}" selected="{!pickVal==field.value}">None</option-->
+                                                                    <aura:iteration items="{!field.pickVals}" var="pickVal">
+                                                                        <option value="{!pickVal}" selected="{!pickVal==field.value}">{!pickVal}</option>
+                                                                    </aura:iteration>
+                                                                </lightning:select>
+                                                            </aura:if>
+                                                            
+                                                            
+                                                            <!-- HANDLING DOUBLE AND PHONE No. INPUT -->
+                                                            <aura:if isTrue="{! or(field.type == 'DOUBLE',field.type == 'PHONE')  }">
+                                                                <div >
+                                                                    <ui:inputNumber aura:id="{!field.name}" class="widthClass" value="{!field.value}" />
+                                                                </div>
+                                                            </aura:if>
+                                                            
+                                                            
+                                                             <!-- HANDLING DATE INPUT -->
+                                                            <aura:if isTrue="{!field.type == 'DATE'}">
+                                                                 <ui:inputDate aura:id="{!field.name}"  class="widthClass" value="{!field.value}" displayDatePicker="true" />
+                                                            </aura:if>
+                                                            
+                                                            <!-- HANDLING TEXTAREA INPUT -->
+                                                            <aura:if isTrue="{!field.type == 'TEXTAREA'}">
+                                                            	<ui:inputTextArea aura:id="{!field.name}"  class="widthClass" value="{!field.value}" rows="1"/>
+                                                            </aura:if>
+                                                            
+														</td>
+													</aura:iteration>
+												</tr>
+											</aura:iteration>
+						    		</tbody>
+						    	</table>
+	                        </article>
+	                    </div>
+	                    <div class="slds-modal__footer">
+	                        <button class="slds-button slds-button--neutral" onclick="{!c.closePopUp}" >Cancel</button>
+	                        <button class="slds-button slds-button--brand" aura:id="saveBtn" onclick="{!c.SaveData}">Save</button>
+	                    </div>
+	                </div>
+	        </div>
+	        <div class="slds-backdrop slds-backdrop--open"></div>
+	    </aura:If>
+    </aura:If>
+     <aura:If isTrue="{!v.errorFlagForNoFields}">
+	    	No Fields are available for this Object.
+	 </aura:If>
+
+
+
+	</form>
+
+</aura:component>

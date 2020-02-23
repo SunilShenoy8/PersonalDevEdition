@@ -1,0 +1,11 @@
+<aura:component controller="GoogleAnalyticsController" implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+
+  <!-- Used specifically fo test Napili communities in this org -->
+  <ltng:require scripts="{!'/resource/googleAnalytics'}" afterScriptsLoaded="{!c.init}" />
+    
+  <aura:attribute name="userdata" type="Object" default="{}"/>
+  <aura:attribute name="trackingid" type="String" default=""/>
+  <aura:attribute name="userdataLoaded" type="Boolean" description="true if userdata loaded" access="private" />
+  <aura:attribute name="trackingidLoaded" type="Boolean" description="true if trackingid loaded" access="private" />
+	
+</aura:component>

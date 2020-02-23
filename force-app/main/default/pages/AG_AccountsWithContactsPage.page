@@ -1,0 +1,62 @@
+<apex:page controller="AG_AccountsWithContactsPageHelper" action="{!getAccounts}">
+    <style>
+        .header{
+        	height:2rem;
+        	text-align: center;
+        	margin-top: 1rem;
+        	font-size: large;
+        }
+        
+        .selectListDiv{
+        	float: right;
+        	margin-right: 1rem;
+        	padding-bottom: 0.5rem;
+        }
+        
+        .panelDiv{
+        	overflow: scroll;
+        	width: 100%; 
+        	height: 400px;
+        }
+    </style>
+    <apex:form >
+        <div class="header">
+            <h1>
+                ATHENE GROUPS - SCENARIO BASED USE CASE
+            </h1>
+        </div>
+        
+        <div class="selectListDiv">
+            <b>Select the No. of Accounts to displat:</b>&nbsp;&nbsp;
+            <apex:selectList size="1" value="{!Page_Limit}" multiselect="false">
+                <apex:selectOptions value="{!pageSizeOpts}"></apex:selectOptions>
+                <apex:actionSupport event="onchange" reRender="PB" action="{!getAccounts}"/>
+            </apex:selectList>
+        </div>
+        <div class="panelDiv">
+            <apex:pageBlock title="Accounts with Related Contacts" id="PB">
+                
+                <apex:pageBlockTable value="{!Accounts}" var="acc">
+                    
+                    <apex:column headerValue="Account Name" value="{!acc.Name}"/>
+                    
+                    <apex:column headerValue="Related Contacts">
+                        <apex:pageBlockTable value="{!acc.Contacts}" var="con">
+                            <apex:column headerValue="ContactName">
+                                <apex:outputText value="{!con.Name}"></apex:outputText>
+                            </apex:column>
+                            <apex:column headerValue="Email">
+                                <apex:outputText value="{!con.Email}"></apex:outputText>
+                            </apex:column>
+                            <apex:column headerValue="Phone">
+                                <apex:outputText value="{!con.Phone}"></apex:outputText>
+                            </apex:column>
+                            
+                        </apex:pageBlockTable>
+                    </apex:column>
+                    
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+        </div>
+    </apex:form>
+</apex:page>

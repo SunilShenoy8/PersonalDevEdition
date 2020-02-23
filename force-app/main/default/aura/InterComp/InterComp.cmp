@@ -1,0 +1,14 @@
+<aura:component >
+	<aura:attribute name="Inter" type="String" default="Inter Component" />
+    <aura:handler name="componentEvent" event="c:ComponentEvent" action="{!c.handleComponentEvent}"/>
+    
+    <div>
+        {!v.Inter}
+    </div>
+    
+    <br/>
+    <br/>
+    <div>
+        <c:InnerComp />
+    </div>
+</aura:component>

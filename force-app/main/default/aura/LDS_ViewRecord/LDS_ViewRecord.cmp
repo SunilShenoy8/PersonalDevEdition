@@ -1,0 +1,36 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="simpleRecord" type="Object"/>
+    <aura:attribute name="record" type="Object"/>
+    <aura:attribute name="error" type="String" />                
+                          
+    <force:recordData aura:id="forceRecordCmp" 
+        recordId="{!v.recordId}"
+        layoutType="FULL"
+        fields="Name,Phone"
+        mode="VIEW"
+        targetRecord="{!v.record}"
+        targetFields="{!v.simpleRecord}" 
+        targetError="{!v.error}"
+	/>
+    
+    <!-- Display a lightning card with details about the record -->
+    <div class="Record Details"> 
+        <lightning:card iconName="standard:account" title="{!v.simpleRecord.Name}" >
+            <div class="slds-p-horizontal--small">
+                <p class="slds-text-heading--small">
+                    <lightning:formattedText title="Phone" value="{!v.simpleRecord.Phone}" /></p>
+                <p class="slds-text-heading--small">
+                     <lightning:formattedText title="Email" value="{!v.simpleRecord.Email__c}" /></p>
+               
+            </div>
+        </lightning:card>
+    </div>
+    <br/>
+
+    <!-- Display Lightning Data Service errors, if any -->
+    <aura:if isTrue="{!not(empty(v.error))}">
+        <div class="recordError">
+            {!v.error}</div>
+    </aura:if>
+</aura:component>

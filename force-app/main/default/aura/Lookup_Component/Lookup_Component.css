@@ -1,0 +1,66 @@
+.THIS.cross{
+    color: red;
+    padding-left: 10px;
+    cursor: pointer;
+}
+.THIS .lookup-un-list{
+  width: calc(50%);
+}
+.THIS .rowX{
+  background: #2070d0;
+  cursor: pointer;
+}
+.THIS .rowX>div,.THIS .rowX>div>label,.THIS .rowX>div>label>span{
+    cursor:pointer;
+    width: calc(100%);
+}
+.THIS .rowX>div>label{
+    width: calc(100%);
+    padding: 13px 13px 10px 5px;
+    display: inline-block;
+    background: #2070d0;
+    border: solid;
+    border-color: white;
+    color: white;
+    cursor: pointer;
+}
+.THIS .rowX>div{
+  background:rgba(255,255,255,0);
+}
+.THIS .pointer{
+    cursor:pointer;
+}
+
+.THIS .rowX:hover{
+    background: #1a315b;;
+}
+
+.THIS .lookup-list{
+    opacity:1;
+}
+
+.THIS .show{
+    display:block;
+}
+
+.THIS .hide{
+    display:none;
+}
+
+.THIS.objectList{
+    z-index: 1200;
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 350px;
+}
+.THIS .lookup-check{
+    display:none;
+}
+@media screen and (max-width: 400px) {
+
+    .THIS.objectList{
+        width:61%;
+    }
+
+}

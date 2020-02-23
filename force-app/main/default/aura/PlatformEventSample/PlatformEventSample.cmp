@@ -1,0 +1,59 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <!-- EMP API component -->
+    <lightning:empApi aura:id="empApi" />
+    
+    
+    <!-- Calls the onInit controller function on component initalization -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    <aura:attribute name="subscribtionList" type="List" />
+    
+    <H1>EVENT SUBSCRIBED IS AccountChange__e</H1>
+    <aura:if isTrue="{! !empty(v.subscribtionList)}">
+        <!--aura:iteration items="{!v.subscribtionList}" var="sub">
+            <span>data changes : {!sub.data.payload.amount__c} status : {!sub.data.payload.status__c}  description : {!sub.data.payload.Description__c} created at : {!sub.data.payload.CreatedDate}</span>
+        </aura:iteration-->
+        
+        <div class="slds-scrollable--y" style="height:500px">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Qty">Qty</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="status">status</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="description">description</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="created at">created at</div>
+                    </th>
+                </tr>
+            </thead>
+            
+                <tbody >
+                <aura:iteration items="{!v.subscribtionList}" var="sub">
+                    <tr class="slds-hint-parent">
+                        <td >
+                            {!sub.data.payload.amount__c}
+                        </td>
+                        <td>
+                            {!sub.data.payload.Status__c}
+                        </td>
+                        <td>
+                            {!sub.data.payload.Description__c}
+                        </td>
+                        <td>
+                            {!sub.data.payload.CreatedDate}
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+            
+        </table>
+        </div>
+    </aura:if>
+    
+    
+</aura:component>

@@ -1,0 +1,48 @@
+<apex:page controller="MultiSelectOpportunityPage" showHeader="true" sidebar="true">
+	<apex:sectionHeader subtitle="Test Page for Opportunities" />
+	<apex:pageBlock title="Sort Opportunities">
+		<script type="text/javascript">
+			function makeSourceEmpty(val){
+
+				//We can also use apex data directly in js
+				var data = '{!OppLeadSource}';
+				console.log(data);
+
+				//Always use full id in dom object
+				document.getElementById("j_id0:j_id2:j_id4:j_id5:leadSource").value = "None";
+
+				// Method for Calling apex method using apex:actionFunction
+				onchangeHandler();
+			}
+		</script>
+		<style type="text/css">
+        	.asideText { font-style: italic; }
+    	</style>
+		<apex:form >
+			<apex:pageBlockSection >
+			    <apex:outputLabel value="Select Stage :" for="theSelectList"/>
+				<apex:selectList value="{!selectedOppStage}" multiselect="false" size="1" onchange="makeSourceEmpty();">
+	            	<apex:selectOptions value="{!OppStages}"/>
+	            	<apex:actionFunction name="onchangeHandler" action="{!changeStage}" reRender="displayBlock"/>
+	        	</apex:selectList>
+
+	        	<apex:outputLabel value="Select Source :" for="theSelectList"/>
+				<apex:selectList value="{!selectedOppLeadSource}" multiselect="false" size="1" id="leadSource" >
+	            	<apex:selectOptions value="{!OppLeadSource}"/>
+	            	<apex:actionSupport event="onchange" action="{!changeLeadSource}" reRender="displayBlock"/>
+	        	</apex:selectList>
+			</apex:pageBlockSection>
+			<apex:outputPanel id="displayBlock" styleClass="asideText">
+				<apex:pageBlock rendered="{!AllOpps.size!=0}">
+			        <apex:pageBlockTable value="{!AllOpps}" var="Opps" width="100%">
+			            <apex:column value="{!Opps.Name}"/>
+			            <apex:column value="{!Opps.Account.Name}"/>
+			            <apex:column value="{!Opps.CloseDate}"/>
+			            <apex:column value="{!Opps.StageName}"/>
+			            <apex:column value="{!Opps.Amount}"/>
+			        </apex:pageBlockTable>
+			    </apex:pageBlock>
+			</apex:outputPanel>
+		</apex:form>
+	</apex:pageBlock>
+</apex:page>

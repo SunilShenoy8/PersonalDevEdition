@@ -1,0 +1,9 @@
+<apex:page controller="WrapperDemoController">
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!RowList}" var="row">
+            <apex:column value="{!row.Name}"/>
+            <apex:column value="{!row.Phone}"/>
+            <apex:column value="{!row.Company}"/>
+        </apex:pageBlockTable>   
+    </apex:pageBlock>
+</apex:page>

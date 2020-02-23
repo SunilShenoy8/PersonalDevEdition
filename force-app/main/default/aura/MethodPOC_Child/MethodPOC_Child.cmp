@@ -1,0 +1,21 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global" >
+	<aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="Parent_Name" type="String" default=""/>
+     <aura:attribute name="dispVal" type="Aura.Component" />
+    
+    <aura:method name="logParam" description="Sample method with parameter">
+        <aura:attribute name="message" type="String" default="default message" />
+    </aura:method>
+    
+    <aura:registerEvent name="appEvent" type="c:DisplayMessagePopupEvent"/>
+    
+    <div class="slds-grid">
+        <div class="slds-col"> CHILD COMPONENT </div>
+        <div class="slds-col"> 
+            <button class="slds-button slds-button--neutral" onclick="{!c.onClickControllerChild}" >Say hai</button>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    
+</aura:component>

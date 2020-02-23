@@ -1,0 +1,11 @@
+<aura:component >
+	<div data-item='1' onclick="{!c.testNew}">
+        1
+    </div>
+    <div data-item='2' onclick="{!c.testNew}">
+        2
+    </div>
+    <div data-item='3' onclick="{!c.testNew}">
+        3
+    </div>
+</aura:component>

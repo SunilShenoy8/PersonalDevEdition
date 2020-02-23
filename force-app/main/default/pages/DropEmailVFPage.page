@@ -1,0 +1,28 @@
+<apex:page controller="DropEmailHandler" action="{!initLoad}">
+	<apex:messages />
+	<apex:pageBlock title="Send an Email">
+		<apex:form >
+            <apex:outputLabel value="To" for="To"/>:<br />     
+			<apex:inputText value="{!toID}" id="toID" maxlength="80" style="width:100%"/>
+			<br /><br />
+            <apex:selectList value="{!selectedTemplateId}" size="1">
+             <apex:actionSupport event="onchange" action="{!fillProjectTasks}" reRender="body"/>
+             <apex:selectOptions value="{!TemplateOptions}"/>
+         	</apex:selectList>
+            <br /><br />
+            {!template.Subject}
+            
+            <br/>
+			{!template.Body}
+            <div id="body" name="body">
+                <apex:outputLabel value="Subject" for="Subject"/>:<br />     
+                <apex:inputText value="{!template.subject}" id="Subject" maxlength="80" style="width:100%"/>
+                <br /><br />
+                <apex:outputLabel value="Body" for="Body"/>:<br />     
+                <apex:inputTextarea value="{!template.body}" id="Body"  rows="10" cols="80" style="width:100%"/>           
+                <br /><br /><br />
+            </div>
+			<apex:commandButton value="Send Email" action="{!send}" /> 
+		</apex:form>
+	</apex:pageBlock>
+</apex:page>

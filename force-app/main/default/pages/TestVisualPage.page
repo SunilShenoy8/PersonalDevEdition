@@ -1,0 +1,16 @@
+<apex:page standardController="Contact" tabstyle="opportunity">
+    <head>
+        <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0070/2294.js" async="async"></script>
+    </head>
+    <apex:form >
+        <apex:pageBlock mode="edit">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!save}" value="save"/>
+             </apex:pageBlockButtons>
+             <apex:pageBlockSection title="Its my new block" columns="2">
+             <apex:inputField value="{!contact.firstname}"/>
+             <apex:inputField value="{!contact.lastname}"/>
+             </apex:pageBlockSection>
+         </apex:pageBlock>
+    </apex:form>
+</apex:page>

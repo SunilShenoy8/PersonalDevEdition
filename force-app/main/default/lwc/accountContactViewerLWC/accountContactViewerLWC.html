@@ -1,0 +1,37 @@
+<template>
+        <div>
+            <div class="divborder">
+                <template if:true={accountList}>
+                    <h1>Account Contact Viewer</h1>
+
+                    <label for="FieldSelect" class="slds-form-element__label slds-no-flex">
+                            Select Account:
+                    </label>
+                    <select class="slds-select cb" name = "optionSelect" onchange={onAccountChange}>
+                        <!-- HERE Check for default value -->
+                        <option value="none" >Select Account</option>
+                        <template  for:each={accountList.data} for:item="acc">
+                            <option key={acc.Id} value={acc.Id} >{acc.Name}</option>
+                        </template>
+                    </select>
+                    
+                    <template if:true={contactList}>
+                            <label for="FieldSelect" class="slds-form-element__label slds-no-flex">
+                                    Select Contact:
+                            </label>
+                            <select class="slds-select" name = "optionSelect2" onchange={onContactSelect}>
+                                <!-- HERE Check for default value -->
+                                <template  for:each={contactList} for:item="con">
+                                    <option key={con.Id} value={con.Id} >{con.LastName}</option>
+                                </template>
+                            </select>
+                    </template>
+
+                    <template if:true={contactId}>
+                        <c-recordformlwc recordid={contactId} objapiname="Contact"></c-recordformlwc>
+                        <lightning-button label="close" onclick={closeHandler}></lightning-button>
+                    </template>
+                </template>
+            </div>
+        </div>
+</template>

@@ -1,0 +1,42 @@
+<aura:component controller="myAccountHandler" implements="flexipage:availableForAllPageTypes,force:hasRecordId">
+	<aura:attribute name="recordId" type="String"/>
+	<aura:attribute name="contactList" type="List"/>
+	<aura:attribute name="componentHeight" type="String" default="400"/>
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+	 <article class="slds-card slds-scrollable" style="{!'height:'+v.componentHeight+'px'}">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__body">  
+                	<div class="slds-text-heading_medium" style="padding-bottom: 15px;">
+	                	<h1><b>
+						Related Contacts:
+						</b></h1>
+					</div>
+					<aura:iteration items="{!v.contactList}" var="contactListItem">
+
+						<article class="slds-card" aura:id="{!contactListItem.id}" >
+						  <div class="slds-card__header slds-grid">
+						    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+						      <div class="slds-media__body">
+						        <h2><b>
+						            {!contactListItem.Name}
+						        </b></h2>
+						      </div>
+						    </header>
+						    </div> 
+						    <div class="slds-card__body slds-card__body_inner slds-grid slds-wrap">
+                                <div class="slds-col slds-size_6-of-12 slds-text-title" >
+                                  {!contactListItem.Email}
+                                </div>
+                                <div class="slds-col slds-size_6-of-12">
+                                    {!contactListItem.Phone}
+                                </div>
+                            </div>
+						</article>
+					</aura:iteration>
+				</div>
+			</header>
+		</div>
+	</article>
+</aura:component>

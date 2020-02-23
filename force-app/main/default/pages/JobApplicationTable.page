@@ -1,0 +1,23 @@
+<apex:page controller="JobAppResumeReviewed">
+    <apex:form >
+        <center>
+        <apex:dataTable border="2" value="{!Job_Applications}" var="Job_Application__c" cellpadding="2" cellspacing="2">
+            <apex:facet name="caption">List of Reviewed Resume job applications</apex:facet>
+            <apex:column >
+                <apex:facet name="header">Applications</apex:facet>
+                <apex:outputField value="{!Job_Application__c.Applicant__c}"/>
+            </apex:column>
+            
+            <apex:column >
+                <apex:facet name="header">Positions</apex:facet>
+                <apex:outputField value="{!Job_Application__c.Position__c}"/>
+            </apex:column>
+            
+            <apex:column >
+                <apex:facet name="header">status</apex:facet>
+                <apex:outputField value="{!Job_Application__c.Status__c}"/>
+            </apex:column>
+        </apex:dataTable>
+       </center>
+    </apex:form>
+</apex:page>

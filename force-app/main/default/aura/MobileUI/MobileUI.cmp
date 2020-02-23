@@ -1,0 +1,12 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <div class="myapp">
+        <div class="slds-grid slds-wrap">
+            <div class="{!$Browser.isPhone == true ? 'slds-col slds-small-size--1-of-1' : 'slds-col slds-size--3-of-4'}">
+                <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around--x-small">Box 1</div>
+            </div>
+            <div class="{!$Browser.isPhone == true ? 'slds-col slds-small-size--1-of-1' : 'slds-col slds-size--1-of-4'}">
+                <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around--x-small">Box 2</div>
+            </div>
+        </div>
+    </div>
+</aura:component>
