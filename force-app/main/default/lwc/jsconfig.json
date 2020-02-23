@@ -32,6 +32,9 @@
             ],
             "c/lookupHolder": [
                 "lookupHolder/lookupHolder.js"
+            ],
+            "c/generic_lookup_component": [
+                "generic_lookup_component/generic_lookup_component.js"
             ]
         }
     },

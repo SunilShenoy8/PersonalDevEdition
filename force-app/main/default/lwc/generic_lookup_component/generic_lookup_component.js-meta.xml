@@ -7,4 +7,12 @@
         <target>lightning__RecordPage</target>
         <target>lightning__HomePage</target>
     </targets>
+    <!-- Configuring the design attributes -->
+    <targetConfigs>
+        <targetConfig targets="lightning__HomePage,lightning__RecordPage,lightning__AppPage">
+            <property name="object_api_name"    type="String"   default="Account"           label="Enter the Object API Name"/>
+            <property name="field_api_name"     type="String"   default="Name"              label="Enter the Field API Name"/>
+            <property name="iconname"           type="String"   default="standard:account"  label="Enter Employee Name"/>
+        </targetConfig>
+      </targetConfigs>
 </LightningComponentBundle>

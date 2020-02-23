@@ -1,5 +1,53 @@
 <template>
-    <div>
-        Hi
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_4-of-4">
+            <template if:false={selectedRecord}>
+                <lightning-input variant="label-hidden" label="Search Record" value={search_key} type="search" onchange={handleChange} placeholder="Search.."></lightning-input>
+            </template>
+            <template if:true={selectedRecord}>
+                <div class="slds-input slds-clearfix" style="background: #CCC;border: 1px #CCC;">
+                    <span class="slds-float_left">{selectedRecord.recName}</span>
+                    <span class="slds-float_right" onclick={onClearSection} style="cursor: pointer;"><lightning-icon icon-name="utility:close" size="small"></lightning-icon></span>
+                </div>
+            </template>
+        </div>
     </div>
+
+    <div class="slds-col slds-size_4-of-4">
+        <template if:true={records}>
+            <template for:each={records} for:item="record">
+                <div class="slds-grid slds-wrap slds-dropdown_length-with-icon-7 slds-dropdown_fluid "  key={record.recId} style="border-radius: 4px;background: white;border: 1px solid black;">
+                    <div class="slds-col slds-size_4-of-4">
+                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                            <li role="presentation" class="slds-listbox__item" key={record.recId}>
+                                <div class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option" id={record.recId} onclick={handleSelect}>
+                                    <span class="slds-media__figure slds-listbox__option-icon">
+                                        <lightning-icon icon-name={iconname} size="small"></lightning-icon>
+                                    </span>
+                                    <span class="slds-media__body" style="padding-top: 7px;font-weight: 600;">
+                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity">
+                                            {record.recName}
+                                        </span>
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </template>
+        </template>
+
+        <templete if:true={showError}>
+            <div class="slds-col slds-size_4-of-4 " style="padding: 0.35rem;border-radius: 4px;background: white;border: 1px solid black;color: indianred;">
+                <span class="slds-media__figure slds-listbox__option-icon slds-p-left_small">
+                    <lightning-icon icon-name="utility:search" size="x-small"></lightning-icon>
+                </span>
+                <span class="slds-p-left_small">
+                    No records found!
+                 </span>
+            </div>
+        </templete>
+    </div>
+   
+    
 </template>
